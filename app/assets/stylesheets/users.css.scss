@@ -1,3 +1,26 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.profil {
+  border: 1px solid black;	
+  border-radius: 5px;
+  float: left;
+  padding: 5px;
+  margin: 5px;
+}
+.profil:hover {
+  background-color: #F5F5F5	
+}
+.profil .name {
+  font-weight: bold;	
+}
+
+.search {
+  text-align: center;	
+  height: 200px;
+  background-image: image-url("background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

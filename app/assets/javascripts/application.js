@@ -12,5 +12,30 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require turbolinks
 //= require_tree .
+
+var address_ready = function() {
+
+  if ($("#location").length != 0) {
+    $("#location").autocomplete({
+	source: function( request, response ) {
+        $.ajax({
+          url: "http://gd.geobytes.com/AutoCompleteCity",
+          dataType: "jsonp",
+          data: {
+            q: request.term
+          },
+          success: function( data ) {
+            response( data );
+          }
+        });
+      },
+      minLength: 2
+    });
+  }
+};
+
+$(document).ready(address_ready);
+$(document).on('page:load', address_ready);
