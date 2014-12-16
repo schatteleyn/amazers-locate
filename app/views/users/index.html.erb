@@ -1,5 +1,21 @@
 <h1>Listing users</h1>
 
+<div id="search">
+<%= form_tag root_url, method: :get do %>
+  <%= label :location, "Search user near : " %>
+  <%= text_field_tag :location, params[:location] %>
+
+  <%= label :distance, "Distance : " %>
+  <%= text_field_tag :distance, params[:distance] %>
+
+  <%= submit_tag "Search" %>
+<% end %>
+</div>
+
+<br>
+<% unless @users == [] %>
+<!-- #size and #empty? create a SQL error -->
+
 <table>
   <thead>
     <tr>
@@ -28,6 +44,6 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<% else %>
+No results yet.
+<% end %>

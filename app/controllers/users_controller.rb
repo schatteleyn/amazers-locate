@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:location].present?
+      @users = User.near(params[:location], params[:distance], order_by_distance: :true)
+    else
+      @users = []
+    end
   end
 
   # GET /users/1
