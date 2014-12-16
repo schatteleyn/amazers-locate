@@ -1,23 +1,31 @@
-<div class="search">
-<h2>FIND PEOPLE AROUND YOU</h2>
-Search for people that live in your city <br/>
-<%= form_tag root_url, method: :get do %>
-  <%= text_field_tag :location, params[:location], placeholder: "Type a city" %>
-  <%= select nil, :distance, [3,5,10,15] %> km
+<% content_for :page_header do %>
+  <div class="search">
+  <h2>FIND PEOPLE AROUND YOU<br/>
+  <small>Search for people that live in your city</small></h2>
+  <%= form_tag root_url, method: :get, class: "form-inline", role: "form" do %>
+    <div class="form-group">	
+    <%= text_field_tag :location, params[:location], placeholder: "Type a city", class: "form-control" %>
+    </div>
+    <div class="form-group">	
+    <%= select nil, :distance, [3,5,10,15].collect {|d| [d.to_s + " km",d] }, {}, {class: "form-control"} %>
+    </div>
+  <% end %>
+  </div>
+  
+  <br>
 <% end %>
-</div>
 
-<br>
-<div class="container">
 <% unless @users == [] %>
 <%# #size and #empty? create a SQL error --> %>
     <% @users.each do |user| %>
+	<%= link_to user_path(user.id) do %>
 	<div class="profil">
+	  <%= image_tag user.avatar.thumb.url, class: "avatar" %>
           <span class="name"><%= user.fullname %></span><br />
-          <%= user.address %>
+          <%= image_tag "marker.png" %><%= user.address %>
 	</div>
+	<% end %>
     <% end %>
 <% else %>
 No results yet.
 <% end %>
-</div>

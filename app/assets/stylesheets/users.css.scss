@@ -2,25 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .profil {
-  border: 1px solid black;	
+  border: 1px solid #BBBBBB;	
   border-radius: 5px;
   float: left;
   padding: 5px;
   margin: 5px;
 }
+
 .profil:hover {
   background-color: #F5F5F5	
 }
+
+.profil .avatar {
+  float: left;
+  border-radius: 20px;
+  padding-right: 5px;
+}
+
 .profil .name {
   font-weight: bold;	
 }
 
 .search {
   text-align: center;	
-  height: 200px;
+  height: 300px;
+  padding-top: 50px;
   background-image: image-url("background.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
+}
+
+h2, small {
+  margin-top: 0px !important;
+  color: white !important;
 }
